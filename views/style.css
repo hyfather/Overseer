@@ -1,12 +1,19 @@
 .environment
 {
-    background-color:#66CCFF;
+    background-color:#003399;
     text-align: center;
+    color:#FFFFFF;
 }
 .deadenvironment
 {
     background-color:#990000;
     text-align: center;
+    color:#FFFFFF;
+}
+
+a
+{
+    color:#FFFFFF;
 }
 
 #left{
@@ -31,15 +38,18 @@
 
 .green
 {
+    color:#FFFFFF;
     background-color:#009900;
 }
 
 .red
 {
+    color:#FFFFFF;
     background-color:#990000;
 }
 
 .yellow
 {
+    color:#000000;
     background-color:#FFCC00;
 }

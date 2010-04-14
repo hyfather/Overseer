@@ -22,7 +22,8 @@
 <div id='right'>
     <% @jobs.each do |job| %>
         <div class='job <%=job[:status]%>'>
-            <h1><%=job[:name]%></h1> <br/>
+	    <%= "<img src='ajax-loader.gif'/>" if job[:status].include?"building" %>
+            <h1><%=job[:name]%></h1>
             <h2>Build: <%=job[:build_number]%></h2>
             <h5><%=job[:commit_msg]%></h5>
         </div>
