@@ -1,0 +1,38 @@
+<head>
+  <meta http-equiv="refresh" content="30" />
+    <LINK REL="StyleSheet" href="style.css" TYPE="text/css"/>
+</head>
+
+<center>
+  <img src="logo.png"/>
+  <h4>Overseer - The MML Environment and Build Status Dashboard</h4>
+</center>
+
+
+<div id='left'>
+<% @environments.each do |env| %>
+    <div class='environment<%= ' dead' if env[:dead] == true%>'>
+        <h3><a href=http://<%=env[:name]%>/mmh><%=env[:name]%></a></h3>
+        <h3>Build: <%=env[:build]%></h3>
+        <h3>Branch: <%=env[:branch]%></h3>
+    </div>
+<%end%>
+</div>
+
+<div id='right'>
+    <% @jobs.each do |job| %>
+        <div class='job <%=job[:status]%>'>
+            <h1><%=job[:name]%></h1> <br/>
+            <h2>Build: <%=job[:build_number]%></h2>
+            <h5><%=job[:commit_msg]%></h5>
+        </div>
+    <%end%>
+</div>
+
+
+
+<center><h5>last checked - <%=@environments_last_updated%></h5></center>
+
+
+
+

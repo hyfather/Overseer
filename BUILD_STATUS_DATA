@@ -1,0 +1,5 @@
+mmh,yellow,3811,[Story-388]-Sandeepr model name and number are now in h1 tag for SEO
+mmh-indexer,green,1920,No Changeset. Build was triggered manually or by upstream!
+mmh-indexer-branch-hotfix,green,29,[Jira 10250] Corrected the server credentials for homeservices alfresco access.
+mmh_hotfix_release,green,516,David - fixing the sears home services url
+mmh_stress_release,green,1331,Mona: renamed HomePage.java file

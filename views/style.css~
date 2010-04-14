@@ -1,0 +1,41 @@
+.environment
+{
+    background-color:#66CCFF;
+    text-align: center;
+}
+.deadenvironment
+{
+    background-color:#990000;
+    text-align: center;
+}
+
+#left{
+    text-align: center;
+    float:left;
+    width:25%;
+}
+#right{
+    text-align: center;
+    float:right;
+    width:74%;
+}
+.job
+{
+    float:left;
+    width:45%;
+    border:1px solid #eee;
+    height:210px;
+    padding:20px;
+    text-align: center;
+}
+
+.green
+{
+    background-color:#009900;
+}
+
+.red
+{
+    background-color:#990000;
+}
+
