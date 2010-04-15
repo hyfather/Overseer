@@ -2,7 +2,7 @@ require "rubygems"
 require "open-uri"
 require "active_support"
 
-HUDSON_JOBS_TO_MONITOR = ['mmh', 'mmh_stress_release', 'mmh_hotfix_release', 'mmh-indexer', 'mmh-indexer-branch-hotfix'] 
+HUDSON_JOBS_TO_MONITOR = ['mmh', 'mmh_stress_release', 'mmh-indexer'] 
 MML_URLS_TO_MONITOR = ['mmhtestqa.kih.kmart.com', 'mmhbuild02p.ecom.sears.com:8180', 'mmh-stress1.ecom.sears.com', 'www.managemylife.com']
 
 ENVIRONMENTS_DATA_FILE = "./ENV_DASHBOARD_DATA"
