@@ -2,7 +2,7 @@ require "rubygems"
 require "open-uri"
 require "active_support"
 
-HUDSON_JOBS_TO_MONITOR = ['mmh', 'mmh_stress_release', 'mmh_hotfix_release', 'mmh-indexer', 'mmh-indexer-branch-hotfix'] 
+HUDSON_JOBS_TO_MONITOR = ['mmh', 'mmh_stress_release', 'mmh-indexer'] 
 MML_URLS_TO_MONITOR = ['mmhtestqa.kih.kmart.com', 'mmhbuild02p.ecom.sears.com:8180', 'mmh-stress1.ecom.sears.com', 'www.managemylife.com']
 
 ENVIRONMENTS_DATA_FILE = "./ENV_DASHBOARD_DATA"
@@ -42,8 +42,9 @@ rescue Exception => e
   jobs = ""
 end
 
-File.new(HUDSON_JOBS_DATA_FILE, "w").print jobs
-
+file_handle = File.new(HUDSON_JOBS_DATA_FILE, "w")
+file_handle.print jobs
+file_handle.close
 
 
 # process environments data file.
@@ -52,14 +53,15 @@ MML_URLS_TO_MONITOR.each do |url|
   begin
     all_properties = open("http://" + url + "/mmh/version.properties").read
     csv_string = ([url, all_properties.split(/\n|=/)[1], all_properties.split(/\n|=/)[3]].join(",") + "\n")
-  rescue
+  rescue Exception
     csv_string = url + ",-,-,DEAD\n"
   end
 
   environments << csv_string
 end
 
-File.new(ENVIRONMENTS_DATA_FILE, "w").print environments
-
+file_handle = File.new(ENVIRONMENTS_DATA_FILE, "w")
+file_handle.print environments
+file_handle.close
 
 
