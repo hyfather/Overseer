@@ -30,7 +30,7 @@ begin
 
       commit_message = (last_build_hash["changeSet"]["items"].try(:first))
       commit_message = commit_message.nil? ? "No Changeset. Build was triggered manually or by upstream!" : commit_message["msg"]
-      commit_message.gsub!(/,|<|>|\//, ' ')
+      commit_message.gsub!(/,|<|>|\n|\//, ' ')
 
       jobs << [job["name"], translate_color(job["color"]), last_build_hash["number"], commit_message].join(",")
       jobs << "\n"
