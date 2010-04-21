@@ -1,6 +1,9 @@
 require "rubygems"
 require "open-uri"
 require "active_support"
+require "crack"
+
+
 
 
 
@@ -13,6 +16,7 @@ MML_URLS_TO_MONITOR = ['mmhtestqa.kih.kmart.com', 'mmhbuild02p.ecom.sears.com:81
 
 ENVIRONMENTS_DATA_FILE = "./ENV_DASHBOARD_DATA"
 HUDSON_JOBS_DATA_FILE = "./BUILD_STATUS_DATA"
+NEWRELIC_DATA_FILE = "./NEWRELIC_STATUS_DATA"
 
 def translate_color(hudson_job_color)
   {"blue" => "green", "blue_anime" => "green building",
@@ -100,3 +104,25 @@ file_handle.print environments
 file_handle.close
 
 
+# process new-relic scores
+
+begin
+  @mmh_rails_apdex = "0"
+  data = Crack::XML.parse(open("http://rpm.newrelic.com/accounts.xml?include=application_health", "x-license-key" => "179a55ad3c628ed4786943ac02e46c364dc471e4"))
+  applications = data["accounts"][0]["applications"]
+  applications.each do |appl|
+    if appl["name"] == "MMH_RAILS"
+      @mmh_rails_apdex = appl["threshold_values"][0]["metric_value"]
+    end
+  end
+
+rescue Exception => e
+  p e.inspect
+end
+
+file_handle = File.new(NEWRELIC_DATA_FILE, "w")
+file_handle.print "mmh_rails,#{@mmh_rails_apdex}"
+file_handle.close
+
+
+  

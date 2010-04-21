@@ -4,6 +4,7 @@ require 'active_support'
 
 ENVIRONMENTS_DATA_FILE="./ENV_DASHBOARD_DATA"
 HUDSON_JOBS_DATA_FILE="./BUILD_STATUS_DATA"
+NEWRELIC_DATA_FILE="./NEWRELIC_STATUS_DATA"
 
 set :public, File.dirname(__FILE__) + '/views'
 set :port, 10000
@@ -23,6 +24,12 @@ get '/' do
   hudson_jobs_data.each_line do |line|
     values = line.split(/,/)
     @jobs << {:name => values[0], :status => values[1], :build_number => values[2], :commit_msg => values[3]}
+  end
+
+
+  newrelic_data = File.new(NEWRELIC_DATA_FILE, "r")
+  newrelic_data.each_line do |line|
+    @apdex = line.split(/,/)[1]
   end
 
   erb :dashboard

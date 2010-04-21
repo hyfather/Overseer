@@ -36,6 +36,15 @@ a
     text-align: center;
 }
 
+.apdex
+{ 
+    padding:20px;
+    height:150px;
+    text-align: center;
+    background-color:#2F4F4F;
+    color:#FFFFFF;
+}
+
 .green
 {
     color:#FFFFFF;
