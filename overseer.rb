@@ -29,7 +29,7 @@ get '/' do
 
   newrelic_data = File.new(NEWRELIC_DATA_FILE, "r")
   newrelic_data.each_line do |line|
-    @apdex = line.split(/,/)[1]
+    @apdex = line.split(/,/)[1].to_f
   end
 
   erb :dashboard

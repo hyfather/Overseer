@@ -17,7 +17,7 @@
         <h3>Branch: <%=env[:branch]%></h3>
     </div>
 <%end%>
-    <div class='apdex'>
+    <div class='apdex <%= "red" if @apdex < 0.5 %> <%= "orange" if @apdex > 0.5 and @apdex < 0.7 %> <%= "blue" if @apdex > 0.7 %>' >
     	 <h1> <%= @apdex %> </h1> <h3>Production Apdex Score</h3>
     </div>
 </div>
